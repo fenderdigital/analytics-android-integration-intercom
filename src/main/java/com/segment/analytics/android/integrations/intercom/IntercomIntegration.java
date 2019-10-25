@@ -1,7 +1,7 @@
 package com.segment.analytics.android.integrations.intercom;
 
 import android.app.Application;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import com.segment.analytics.Analytics;
 import com.segment.analytics.Properties;
@@ -106,10 +106,11 @@ public class IntercomIntegration extends Integration<Intercom> {
 
     String userId = identify.userId();
 
+    String email = identify.traits().email();
     if (isNullOrEmpty(userId)) {
       intercom.registerUnidentifiedUser();
       logger.verbose("Intercom.client().registerUnidentifiedUser()");
-    } else {
+    } else if(!isNullOrEmpty(email)) {
       Registration registration = Registration.create().withUserId(userId);
       intercom.registerIdentifiedUser(registration);
       logger.verbose("Intercom.client().registerIdentifiedUser(registration)");
