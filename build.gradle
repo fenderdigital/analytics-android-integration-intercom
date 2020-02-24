@@ -13,13 +13,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.f2prateek.javafmt'
 
 android {
-  compileSdkVersion 26
-  buildToolsVersion '25.0.3'
+  compileSdkVersion 28
+  buildToolsVersion '28.0.3'
 
   defaultConfig {
-    minSdkVersion 15
-    targetSdkVersion 26
-    compileSdkVersion 26
+    minSdkVersion 23
+    targetSdkVersion 28
+    compileSdkVersion 28
   }
 
   compileOptions {
@@ -40,7 +40,7 @@ dependencies {
     }
   }
 
-  compile 'com.segment.analytics.android:analytics:4.0.0'
+  compile 'com.segment.analytics.android:analytics:4.3.0'
   testCompile 'com.segment.analytics.android:analytics-tests:4.2.6'
 
   compile 'io.intercom.android:intercom-sdk-base:6.0.1'
