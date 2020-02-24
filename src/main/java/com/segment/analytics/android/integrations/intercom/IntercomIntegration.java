@@ -117,7 +117,7 @@ public class IntercomIntegration extends Integration<Intercom> {
     if (isNullOrEmpty(userId)) {
       intercom.registerUnidentifiedUser();
       logger.verbose("Intercom.client().registerUnidentifiedUser()");
-    } else if (!instrument.isEmpty() && !style.isEmpty()){
+    } else if (!isNullOrEmpty(instrument) && !isNullOrEmpty(style)){
       Registration registration = Registration.create().withUserId(userId);
       intercom.registerIdentifiedUser(registration);
       logger.verbose("Intercom.client().registerIdentifiedUser(registration)");
