@@ -30,6 +30,10 @@ android {
   testOptions {
 //    unitTests.returnDefaultValues = true
   }
+  configurations.all {
+    resolutionStrategy.force 'com.google.firebase:firebase-iid:17.1.2'
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+  }
 }
 
 dependencies {
