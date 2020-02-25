@@ -106,6 +106,8 @@ public class IntercomIntegration extends Integration<Intercom> {
 
     String userId = identify.userId();
 
+    boolean subscription =   identify.traits().getBoolean("subscription", false);
+
     String email = identify.traits().email();
     if(!isNullOrEmpty(email)){
       return;
@@ -114,7 +116,7 @@ public class IntercomIntegration extends Integration<Intercom> {
     if (isNullOrEmpty(userId)) {
       intercom.registerUnidentifiedUser();
       logger.verbose("Intercom.client().registerUnidentifiedUser()");
-    } else {
+    } else if (subscription){
       Registration registration = Registration.create().withUserId(userId);
       intercom.registerIdentifiedUser(registration);
       logger.verbose("Intercom.client().registerIdentifiedUser(registration)");

@@ -13,13 +13,13 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.f2prateek.javafmt'
 
 android {
-  compileSdkVersion 26
-  buildToolsVersion '25.0.3'
+  compileSdkVersion 28
+  buildToolsVersion '28.0.3'
 
   defaultConfig {
-    minSdkVersion 15
-    targetSdkVersion 26
-    compileSdkVersion 26
+    minSdkVersion 23
+    targetSdkVersion 28
+    compileSdkVersion 28
   }
 
   compileOptions {
@@ -29,6 +29,10 @@ android {
 
   testOptions {
 //    unitTests.returnDefaultValues = true
+  }
+  configurations.all {
+    resolutionStrategy.force 'com.google.firebase:firebase-iid:17.1.2'
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
   }
 }
 
@@ -40,11 +44,11 @@ dependencies {
     }
   }
 
-  compile 'com.segment.analytics.android:analytics:4.0.0'
+  compile 'com.segment.analytics.android:analytics:4.3.0'
   testCompile 'com.segment.analytics.android:analytics-tests:4.2.6'
 
-  compile 'io.intercom.android:intercom-sdk-base:4.1.2'
-  compile 'io.intercom.android:intercom-sdk-fcm:4.1.2'
+  compile 'io.intercom.android:intercom-sdk-base:6.0.1'
+  compile 'io.intercom.android:intercom-sdk-fcm:6.0.1'
 
   testCompile 'junit:junit:4.12'
 
